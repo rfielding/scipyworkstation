@@ -1,0 +1,29 @@
+version: "3"
+services:
+  tensorflow-notebook:
+    image: dockercontroller
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "4.0"
+          memory: 2000M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "10000:8888"
+    networks:
+      - tfnet
+    environment:
+      - JUPYTER_TOKEN=changeit
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - .:/home/jovyan/work 
+      - /var/run/docker.sock:/var/run/docker.sock
+networks:
+  tfnet: 
+
+
