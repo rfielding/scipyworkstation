@@ -21,6 +21,7 @@ In order to bring up this image inside of a docker-compose network, make the ima
 This will give an image with more installed, like OpenCV, docker (ie: control docker itself from one of the containers, where we have Tensorflow installed)
 
 ```
+sudo docker-compose build
 sudo docker-compose up
 ```
 
